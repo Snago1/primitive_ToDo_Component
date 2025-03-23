@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Button } from "antd";
 
 const App = () => {
   const [todos, setTodos] = useState([]);
@@ -17,16 +18,26 @@ const App = () => {
   return (
     <div>
       <input
+        style={{ marginRight: 20 }}
         type="text"
         value={input}
         onChange={(e) => setInput(e.target.value)}
       />
-      <button onClick={addTodo}>Добавить задачу</button>
+      <Button type="primary" onClick={addTodo}>
+        Добавить задачу
+      </Button>
+
       <ul>
         {todos.map((todo, index) => (
           <li key={index}>
             {todo}
-            <button onClick={() => removeTodo(index)}>Удалить</button>
+            <Button
+              danger
+              style={{ marginLeft: 20 }}
+              onClick={() => removeTodo(index)}
+            >
+              Удалить
+            </Button>
           </li>
         ))}
       </ul>
